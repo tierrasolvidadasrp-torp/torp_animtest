@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TORP AnimTest</title>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="sidebar-container" class="sidebar">
+        <!-- Header -->
+        <div class="header">
+            <h1>TORP <span>ANIMTEST</span></h1>
+            <p id="menu-subtitle">Selector de Animaciones y Escenarios</p>
+        </div>
+
+        <!-- Tabs Navigation -->
+        <div class="tabs-nav">
+            <button id="tab-anims" class="tab-link active" onclick="switchTab('anims')">🎭 Anims</button>
+            <button id="tab-scenarios" class="tab-link" onclick="switchTab('scenarios')">🎬 Escenarios</button>
+            <button id="tab-emotes" class="tab-link" onclick="switchTab('emotes')">🤝 Gestos</button>
+            <button id="tab-free" class="tab-link" onclick="switchTab('custom')">🛠️ Libre</button>
+        </div>
+
+        <!-- Search Bar (hidden in Custom tab) -->
+        <div class="search-box" id="search-box-container">
+            <input type="text" id="search-input" placeholder="Buscar..." oninput="filterList()">
+            <span class="clear-search" onclick="clearSearch()">✕</span>
+        </div>
+
+        <!-- Main Dynamic Content List -->
+        <div class="content-body">
+            <!-- Dedicated Fixed Back Button Container -->
+            <div id="back-nav-container" class="back-nav-container hidden">
+                <button id="back-to-cats-btn" class="back-btn" onclick="goBackToCategories()">
+                    <span>⬅️ <span id="back-btn-text">Volver a Categorías</span></span>
+                </button>
+            </div>
+
+            <!-- Normal Lists -->
+            <div id="list-container" class="list-container"></div>
+
+            <!-- Custom Player Tab View -->
+            <div id="custom-container" class="custom-container hidden">
+                <div class="custom-card">
+                    <h3 id="free-player-title">Reproductor Libre</h3>
+                    <p id="free-player-desc" class="custom-desc">Ingresa cualquier animación del archivo masivo de RedM (336k+ anims):</p>
+                    
+                    <div class="input-group">
+                        <label id="label-dict" for="custom-dict">Diccionario de Animación</label>
+                        <input type="text" id="custom-dict" placeholder="Ej: script_common@wave@male_a">
+                    </div>
+
+                    <div class="input-group">
+                        <label id="label-name" for="custom-name">Nombre de Animación</label>
+                        <input type="text" id="custom-name" placeholder="Ej: wave_a">
+                    </div>
+
+                    <div class="input-row">
+                        <input type="checkbox" id="custom-upper">
+                        <label id="label-upper" for="custom-upper" style="display:inline; margin-left: 5px;">Solo Parte Superior (Upper Body)</label>
+                    </div>
+
+                    <button id="btn-play" class="play-btn" onclick="playCustomAnim()">▶️ Reproducir Animación</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Persistent Footer -->
+        <div class="footer">
+            <button id="stop-btn" class="stop-btn" onclick="stopAction()">❌ DETENER ACCIÓN</button>
+        </div>
+    </div>
+
+    <!-- Zoom Slider on the right side of the screen -->
+    <div id="zoom-container" class="zoom-slider-container">
+        <span class="zoom-icon">🔍</span>
+        <input type="range" id="zoom-slider" min="1.0" max="10.0" value="2.4" step="0.1" oninput="updateZoom(this.value)">
+    </div>
+
+    <!-- Script imports -->
+    <script src="anims_data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
