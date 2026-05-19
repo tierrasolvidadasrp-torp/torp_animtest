@@ -1,7 +1,7 @@
 Config = {}
 
 -- Idioma del menú ('es' para Español, 'en' para Inglés)
-Config.Language = 'en'
+Config.Language = 'es'
 
 -- Comando de chat para abrir el menú
 Config.Command = 'animtest'

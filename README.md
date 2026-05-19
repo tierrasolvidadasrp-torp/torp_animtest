@@ -178,4 +178,3 @@ Config.DefaultKey = 'F9'
 *   **Arrastrar y Rotar:** Haz clic izquierdo y arrastra el ratón sobre cualquier parte vacía de la pantalla fuera del menú lateral para orbitar la cámara **360°** alrededor de tu personaje.
 *   **Slider de Zoom:** Haz scroll o arrastra el slider vertical en la parte derecha de la pantalla para acercar o alejar la cámara.
 *   **Copiar Acción:** Pulsa el icono del portapapeles `📋` al lado de cualquier animación, escenario o emote para copiar la cadena directamente al portapapeles de Windows.
-

@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TORP AnimTest</title>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="sidebar-container" class="sidebar">
+        <!-- Header -->
+        <div class="header">
+            <h1>TORP <span>ANIMTEST</span></h1>
+            <p id="menu-subtitle">Selector de Animaciones y Escenarios</p>
+        </div>
+
+        <!-- Tabs Navigation -->
+        <div class="tabs-nav">
+            <button id="tab-anims" class="tab-link active" onclick="switchTab('anims')">🎭 Anims</button>
+            <button id="tab-scenarios" class="tab-link" onclick="switchTab('scenarios')">🎬 Escenarios</button>
+            <button id="tab-emotes" class="tab-link" onclick="switchTab('emotes')">🤝 Gestos</button>
+            <button id="tab-free" class="tab-link" onclick="switchTab('custom')">🛠️ Libre</button>
+            <button id="tab-visuals" class="tab-link" onclick="switchTab('visuals')">👁️ Visuales</button>
+        </div>
+
+        <!-- Search Bar (hidden in Custom tab) -->
+        <div class="search-box" id="search-box-container">
+            <input type="text" id="search-input" placeholder="Buscar..." oninput="filterList()">
+            <span class="clear-search" onclick="clearSearch()">✕</span>
+        </div>
+
+        <!-- Main Dynamic Content List -->
+        <div class="content-body">
+            <!-- Dedicated Fixed Back Button Container -->
+            <div id="back-nav-container" class="back-nav-container hidden">
+                <button id="back-to-cats-btn" class="back-btn" onclick="goBackToCategories()">
+                    <span>⬅️ <span id="back-btn-text">Volver a Categorías</span></span>
+                </button>
+            </div>
+
+            <!-- Normal Lists -->
+            <div id="list-container" class="list-container"></div>
+
+            <!-- Custom Player Tab View -->
+            <div id="custom-container" class="custom-container hidden">
+                <div class="custom-card">
+                    <h3 id="free-player-title">Reproductor Libre</h3>
+                    <p id="free-player-desc" class="custom-desc">Ingresa cualquier animación del archivo masivo de RedM
+                        (336k+ anims):</p>
+
+                    <div class="input-group">
+                        <label id="label-dict" for="custom-dict">Diccionario de Animación</label>
+                        <input type="text" id="custom-dict" placeholder="Ej: script_common@wave@male_a">
+                    </div>
+
+                    <div class="input-group">
+                        <label id="label-name" for="custom-name">Nombre de Animación</label>
+                        <input type="text" id="custom-name" placeholder="Ej: wave_a">
+                    </div>
+
+                    <div class="input-row">
+                        <input type="checkbox" id="custom-upper">
+                        <label id="label-upper" for="custom-upper" style="display:inline; margin-left: 5px;">Solo Parte
+                            Superior (Upper Body)</label>
+                    </div>
+
+                    <button id="btn-play" class="play-btn" onclick="playCustomAnim()">▶️ Reproducir Animación</button>
+                </div>
+            </div>
+
+            <!-- Visuals Tab View -->
+            <!-- Visuals Tab View -->
+            <div id="visuals-container" class="visuals-container hidden">
+
+                <!-- Rediseño Wanted Status -->
+                <div class="custom-card">
+                    <h3 style="color:#e74c3c; display:flex; align-items:center; gap:8px;">🚓 Estado de Se Busca (Wanted)
+                    </h3>
+                    <p class="custom-desc" style="margin-bottom:8px;">Prueba el sistema de búsqueda Wanted de RDR2
+                        (estilo torp_weed y torp_telegrama).</p>
+                    <div style="display:flex; flex-direction:column; gap:4px; margin-bottom:8px;">
+                        <label
+                            style="font-size:10px; text-transform:uppercase; color:var(--text-muted); display:block;">Motivo
+                            / Ley (Wanted Reason):</label>
+                        <input type="text" id="wanted-reason" value="ROBO A MANO ARMADA"
+                            style="width:100%; padding:6px; background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.08); border-radius:4px; color:#fff; font-size:12px;">
+                    </div>
+                    <div style="display: flex; gap: 6px; margin-bottom:8px;">
+                        <button class="action-btn-primary" onclick="toggleWanted(true)"
+                            style="background: linear-gradient(135deg, #c0392b, #e74c3c); flex: 1; padding:6px 2px; font-size:11px;">🚓
+                            Activar</button>
+                        <button class="action-btn-primary" onclick="toggleWanted(false)"
+                            style="background: linear-gradient(135deg, #7f8c8d, #95a5a6); flex: 1; padding:6px 2px; font-size:11px;">🟢
+                            Limpiar</button>
+                    </div>
+                    <div class="code-box">
+                        <code class="code-snippet"
+                            id="wanted-snippet">local w = DatabindingAddDataContainerFromPath("", "wanted")</code>
+                        <button class="copy-btn" onclick="copyWantedSnippet()">📋</button>
+                    </div>
+                </div>
+
+                <!-- Rediseño HUD Shards -->
+                <div class="custom-card">
+                    <h3 style="color:#d4a34f; display:flex; align-items:center; gap:8px;">🎬 Banners y Shards Visuales
+                    </h3>
+                    <p class="custom-desc" style="margin-bottom:8px;">Banners nativos de ubicación y tareas en la
+                        pantalla.</p>
+
+                    <div class="input-group" style="margin-bottom:6px;">
+                        <label
+                            style="font-size:10px; text-transform:uppercase; color:var(--text-muted); display:block; margin-bottom:2px;">Título
+                            del Banner</label>
+                        <input type="text" id="shard-title" value="MISIÓN CUMPLIDA"
+                            style="width:100%; padding:6px; background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.08); border-radius:4px; color:#fff; font-size:12px;">
+                    </div>
+                    <div class="input-group" style="margin-bottom:6px;">
+                        <label
+                            style="font-size:10px; text-transform:uppercase; color:var(--text-muted); display:block; margin-bottom:2px;">Subtítulo
+                            / Detalles</label>
+                        <input type="text" id="shard-subtitle" value="Has cobrado tu recompensa"
+                            style="width:100%; padding:6px; background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.08); border-radius:4px; color:#fff; font-size:12px;">
+                    </div>
+                    <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+                        <span
+                            style="font-size:10px; text-transform:uppercase; color:var(--text-muted);">Duración:</span>
+                        <input type="range" id="shard-duration" min="2000" max="10000" step="500" value="5000"
+                            oninput="updateShardDurVal(this.value)" style="flex:1;">
+                        <span id="shard-dur-val" style="font-size:11px; color:var(--gold); width:35px;">5.0s</span>
+                    </div>
+
+                    <div style="display: flex; gap: 6px; margin-bottom:8px;">
+                        <button class="action-btn-primary" onclick="triggerTestShard('location')"
+                            style="background: linear-gradient(135deg, #d35400, #e67e22); flex: 1; padding:6px 2px; font-size:11px;">🎬
+                            Shard Ubicación</button>
+                        <button class="action-btn-primary" onclick="triggerTestShard('task')"
+                            style="background: linear-gradient(135deg, #27ae60, #2ecc71); flex: 1; padding:6px 2px; font-size:11px;">📋
+                            Shard Tarea</button>
+                    </div>
+                    <div class="code-box">
+                        <code class="code-snippet"
+                            id="shard-snippet">Citizen.InvokeNative(0xD05590C1AB38F068, data, info, true)</code>
+                        <button class="copy-btn" onclick="copyShardSnippet()">📋</button>
+                    </div>
+                </div>
+
+                <!-- HUD Helper Fields (NUEVO) -->
+                <div class="custom-card">
+                    <h3 style="color:#d4a34f; display:flex; align-items:center; gap:8px;">📋 Campos de Ayuda HUD</h3>
+                    <p class="custom-desc" style="margin-bottom:8px;">Dibuja una lista de tareas u objetivos en el
+                        lateral de la pantalla.</p>
+
+                    <div style="display:flex; flex-direction:column; gap:4px; margin-bottom:8px;">
+                        <div style="display:flex; gap:4px;">
+                            <input type="text" id="helper-lbl-1" value="Objetivo Principal" placeholder="Etiqueta 1"
+                                style="flex:1; padding:4px 6px; background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.08); border-radius:4px; color:#fff; font-size:11px;">
+                            <input type="text" id="helper-val-1" value="Cazar Lobo" placeholder="Valor 1"
+                                style="flex:1; padding:4px 6px; background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.08); border-radius:4px; color:#fff; font-size:11px;">
+                        </div>
+                        <div style="display:flex; gap:4px;">
+                            <input type="text" id="helper-lbl-2" value="Estado" placeholder="Etiqueta 2"
+                                style="flex:1; padding:4px 6px; background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.08); border-radius:4px; color:#fff; font-size:11px;">
+                            <input type="text" id="helper-val-2" value="En Progreso" placeholder="Valor 2"
+                                style="flex:1; padding:4px 6px; background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.08); border-radius:4px; color:#fff; font-size:11px;">
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 6px; margin-bottom:8px;">
+                        <button class="action-btn-primary" onclick="triggerHelperText(true)"
+                            style="background: linear-gradient(135deg, #2980b9, #3498db); flex: 1; padding:6px 2px; font-size:11px;">📋
+                            Mostrar HUD</button>
+                        <button class="action-btn-primary" onclick="triggerHelperText(false)"
+                            style="background: linear-gradient(135deg, #7f8c8d, #95a5a6); flex: 1; padding:6px 2px; font-size:11px;">🟢
+                            Ocultar</button>
+                    </div>
+                    <div class="code-box">
+                        <code class="code-snippet"
+                            id="helper-snippet">Citizen.InvokeNative(0xC9CAEAEEC1256E54, -66088566) -- Run every frame</code>
+                        <button class="copy-btn" onclick="copyHelperSnippet()">📋</button>
+                    </div>
+                </div>
+
+                <!-- Countdown Timer (NUEVO) -->
+                <div class="custom-card">
+                    <h3 style="color:#d4a34f; display:flex; align-items:center; gap:8px;">⏱️ Temporizador (Countdown)
+                    </h3>
+                    <p class="custom-desc" style="margin-bottom:8px;">Inicia la barra de cuenta regresiva nativa en la
+                        parte superior.</p>
+
+                    <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+                        <span
+                            style="font-size:10px; text-transform:uppercase; color:var(--text-muted);">Segundos:</span>
+                        <input type="range" id="countdown-duration" min="5" max="60" step="5" value="15"
+                            oninput="updateCountdownDurVal(this.value)" style="flex:1;">
+                        <span id="countdown-dur-val" style="font-size:11px; color:var(--gold); width:25px;">15s</span>
+                    </div>
+
+                    <div style="display: flex; gap: 6px; margin-bottom:8px;">
+                        <button class="action-btn-primary" onclick="triggerCountdown(true)"
+                            style="background: linear-gradient(135deg, #8e44ad, #9b59b6); flex: 1; padding:6px 2px; font-size:11px;">⏱️
+                            Iniciar</button>
+                        <button class="action-btn-primary" onclick="triggerCountdown(false)"
+                            style="background: linear-gradient(135deg, #7f8c8d, #95a5a6); flex: 1; padding:6px 2px; font-size:11px;">🟢
+                            Detener</button>
+                    </div>
+                    <div class="code-box">
+                        <code class="code-snippet"
+                            id="countdown-snippet">DatabindingAddDataContainerFromPath("", "MPCountdown")</code>
+                        <button class="copy-btn" onclick="copyCountdownSnippet()">📋</button>
+                    </div>
+                </div>
+
+                <!-- Passive Icon (NUEVO) -->
+                <div class="custom-card">
+                    <h3 style="color:#d4a34f; display:flex; align-items:center; gap:8px;">🛡️ Escudo Pasivo HUD</h3>
+                    <p class="custom-desc" style="margin-bottom:8px;">Dibuja el icono de escudo pasivo nativo al lado
+                        del minimapa.</p>
+
+                    <div style="display: flex; gap: 6px; margin-bottom:8px;">
+                        <button class="action-btn-primary" onclick="triggerPassiveIcon(true)"
+                            style="background: linear-gradient(135deg, #1abc9c, #2ecc71); flex: 1; padding:6px 2px; font-size:11px;">🛡️
+                            Activar Icono</button>
+                        <button class="action-btn-primary" onclick="triggerPassiveIcon(false)"
+                            style="background: linear-gradient(135deg, #7f8c8d, #95a5a6); flex: 1; padding:6px 2px; font-size:11px;">🟢
+                            Desactivar</button>
+                    </div>
+                    <div class="code-box">
+                        <code class="code-snippet"
+                            id="passive-snippet">DatabindingAddDataContainerFromPath("", "PassiveIcon")</code>
+                        <button class="copy-btn" onclick="copySnippetText('passive-snippet')">📋</button>
+                    </div>
+                </div>
+
+                <!-- UI Apps (NUEVO) -->
+                <div class="custom-card">
+                    <h3 style="color:#d4a34f; display:flex; align-items:center; gap:8px;">🎬 Aplicaciones de Interfaz
+                        (UI App)</h3>
+                    <p class="custom-desc" style="margin-bottom:8px;">Lanza menús nativos del juego por su identificador
+                        Hash.</p>
+
+                    <div style="display:flex; flex-direction:column; gap:4px; margin-bottom:8px;">
+                        <label
+                            style="font-size:10px; text-transform:uppercase; color:var(--text-muted); display:block;">Seleccionar
+                            UI App:</label>
+                        <select id="uiapp-select" onchange="updateUiAppSnippet(this.value)"
+                            style="width:100%; padding:6px; background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.08); border-radius:4px; color:#fff; font-size:12px; outline:none;">
+                            <option value="satchel">🎒 Inventario (Satchel)</option>
+                            <option value="abilities">🃏 Cartas de Habilidad (Abilities)</option>
+                            <option value="progress_menu">📈 Menú de Progreso</option>
+                            <option value="opening_credits_sequence">🎬 Créditos de Apertura</option>
+                        </select>
+                    </div>
+
+                    <div style="display: flex; gap: 6px; margin-bottom:8px;">
+                        <button class="action-btn-primary" onclick="triggerSelectedUiApp(true)"
+                            style="background: linear-gradient(135deg, #e67e22, #f39c12); flex: 1; padding:6px 2px; font-size:11px;">🎬
+                            Abrir Menu</button>
+                        <button class="action-btn-primary" onclick="triggerSelectedUiApp(false)"
+                            style="background: linear-gradient(135deg, #7f8c8d, #95a5a6); flex: 1; padding:6px 2px; font-size:11px;">🟢
+                            Cerrar</button>
+                    </div>
+                    <div class="code-box">
+                        <code class="code-snippet" id="uiapp-snippet">LaunchUiappByHash(joaat("satchel"))</code>
+                        <button class="copy-btn" onclick="copySnippetText('uiapp-snippet')">📋</button>
+                    </div>
+                </div>
+
+                <!-- Rediseño Filtros PostFX Organizado por Carpetas -->
+                <div class="custom-card"
+                    style="display:flex; flex-direction:column; overflow:hidden; padding-bottom:12px; margin-bottom:16px;">
+                    <h3 style="color:#d4a34f; display:flex; align-items:center; gap:8px; margin-bottom:4px;">👁️ Filtros
+                        PostFX de Pantalla</h3>
+                    <p class="custom-desc" style="margin-bottom:10px;">Filtros cinemáticos organizados en carpetas.</p>
+
+                    <button class="action-btn-primary" onclick="stopAllPostFX()"
+                        style="margin-bottom: 12px; background: linear-gradient(135deg, #c0392b, #d35400); width:100%; padding:8px 0; font-size:12px;">🛑
+                        Detener Todos los Efectos</button>
+
+                    <!-- Carpetas / Acordeones de PostFX -->
+                    <div class="postfx-folders" style="display:flex; flex-direction:column; gap:6px;">
+
+                        <!-- Categoría 1 -->
+                        <div class="postfx-folder" id="folder-focus-wrapper">
+                            <button class="folder-header" onclick="toggleFolder('folder-focus')">🎯 Modos de Enfoque
+                                <span class="folder-arrow">▶</span></button>
+                            <div id="folder-focus" class="folder-content">
+                                <!-- Llenado dinámico desde JS -->
+                            </div>
+                        </div>
+
+                        <!-- Categoría 2 -->
+                        <div class="postfx-folder" id="folder-states-wrapper">
+                            <button class="folder-header" onclick="toggleFolder('folder-states')">🍻 Estados Alterados
+                                <span class="folder-arrow">▶</span></button>
+                            <div id="folder-states" class="folder-content">
+                                <!-- Llenado dinámico -->
+                            </div>
+                        </div>
+
+                        <!-- Categoría 3 -->
+                        <div class="postfx-folder" id="folder-cinematic-wrapper">
+                            <button class="folder-header" onclick="toggleFolder('folder-cinematic')">🎬 Cinematográficos
+                                <span class="folder-arrow">▶</span></button>
+                            <div id="folder-cinematic" class="folder-content">
+                                <!-- Llenado dinámico -->
+                            </div>
+                        </div>
+
+                        <!-- Categoría 4 -->
+                        <div class="postfx-folder" id="folder-chapters-wrapper">
+                            <button class="folder-header" onclick="toggleFolder('folder-chapters')">📖 Capítulos y Prólogos
+                                <span class="folder-arrow">▶</span></button>
+                            <div id="folder-chapters" class="folder-content">
+                                <!-- Llenado dinámico -->
+                            </div>
+                        </div>
+
+                        <!-- Categoría 5 -->
+                        <div class="postfx-folder" id="folder-timecards-wrapper">
+                            <button class="folder-header" onclick="toggleFolder('folder-timecards')">⏳ Cartas de Tiempo
+                                <span class="folder-arrow">▶</span></button>
+                            <div id="folder-timecards" class="folder-content">
+                                <!-- Llenado dinámico -->
+                            </div>
+                        </div>
+
+                        <!-- Categoría 6 -->
+                        <div class="postfx-folder" id="folder-cutscenes-wrapper">
+                            <button class="folder-header" onclick="toggleFolder('folder-cutscenes')">🎞️ Filtros de
+                                Cutscenes <span class="folder-arrow">▶</span></button>
+                            <div id="folder-cutscenes" class="folder-content">
+                                <!-- Llenado dinámico -->
+                            </div>
+                        </div>
+
+                        <!-- Categoría 7 -->
+                        <div class="postfx-folder" id="folder-special-wrapper">
+                            <button class="folder-header" onclick="toggleFolder('folder-special')">🌟 Momentos Especiales y Arthur
+                                <span class="folder-arrow">▶</span></button>
+                            <div id="folder-special" class="folder-content">
+                                <!-- Llenado dinámico -->
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Persistent Footer -->
+        <div class="footer">
+            <button id="stop-btn" class="stop-btn" onclick="stopAction()">❌ DETENER ACCIÓN</button>
+        </div>
+    </div>
+
+    <!-- Zoom Slider on the right side of the screen -->
+    <div id="zoom-container" class="zoom-slider-container">
+        <span class="zoom-icon">🔍</span>
+        <input type="range" id="zoom-slider" min="1.0" max="10.0" value="2.4" step="0.1"
+            oninput="updateZoom(this.value)">
+    </div>
+
+    <!-- Script imports -->
+    <script src="anims_data.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
