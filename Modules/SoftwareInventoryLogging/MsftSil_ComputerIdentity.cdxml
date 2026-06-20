@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+<Class ClassName="root\InventoryLogging\MsftSil_ComputerIdentity">
+    <Version>1.0.0.0</Version>
+    <DefaultNoun>SilComputerIdentity</DefaultNoun>
+    <InstanceCmdlets>
+<!--
+Global definition for query parameters. Not used in this example because we have a single cmdlet only.
+-->
+     <GetCmdletParameters />
+<!--
+Definition of Get-SilComputerIdentity cmdlet
+-->
+      <GetCmdlet>
+       <CmdletMetadata Verb="Get" />
+      </GetCmdlet>      
+    </InstanceCmdlets>
+  </Class>
+</PowerShellMetadata>

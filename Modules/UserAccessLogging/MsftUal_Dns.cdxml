@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata
+  xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+
+  <Class ClassName="root\AccessLogging\MsftUal_Dns">
+    <Version>1.0</Version>
+    <DefaultNoun>UalDns</DefaultNoun>
+    <InstanceCmdlets>
+      <GetCmdletParameters DefaultCmdletParameterSet="ByName">
+        <QueryableProperties>
+          <Property PropertyName="ProductName">
+            <Type PSType="System.String"/>
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="RoleName">
+            <Type PSType="System.String"/>
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="RoleGuid">
+            <Type PSType="System.String"/>
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="IPAddress">
+            <Type PSType="System.String"/>
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="HostName">
+            <Type PSType="System.String"/>
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="LastSeen">
+            <Type PSType="System.DateTime"/>
+            <RegularQuery AllowGlobbing="false">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" />
+            </RegularQuery>
+          </Property>
+        </QueryableProperties>
+      </GetCmdletParameters>
+      <GetCmdlet>
+        <CmdletMetadata Verb="Get" HelpUri="http://go.microsoft.com/fwlink/?LinkId=242953" />
+      </GetCmdlet>
+    </InstanceCmdlets>
+  </Class>
+</PowerShellMetadata>
+

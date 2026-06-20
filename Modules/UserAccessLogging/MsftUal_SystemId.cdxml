@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata
+  xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+
+  <Class ClassName="root\AccessLogging\MsftUal_SystemId">
+    <Version>1.0</Version>
+    <DefaultNoun>UalSystemId</DefaultNoun>
+    <InstanceCmdlets>
+      <GetCmdletParameters DefaultCmdletParameterSet="ByName">
+        <QueryableProperties>
+          <Property PropertyName="PhysicalProcessorCount">
+            <Type PSType="System.Uint32"/>
+            <RegularQuery AllowGlobbing="false">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="CoresPerPhysicalProcessor">
+            <Type PSType="System.Uint32"/>
+            <RegularQuery AllowGlobbing="false">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="LogicalProcessorsPerPhysicalProcessor">
+            <Type PSType="System.Uint32"/>
+            <RegularQuery AllowGlobbing="false">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="OSMajor">
+            <Type PSType="System.Uint32"/>
+            <RegularQuery AllowGlobbing="false">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="OSMinor">
+            <Type PSType="System.Uint32"/>
+            <RegularQuery AllowGlobbing="false">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="OSBuildNumber">
+            <Type PSType="System.Uint32"/>
+            <RegularQuery AllowGlobbing="false">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="OSPlatformId">
+            <Type PSType="System.Uint32"/>
+            <RegularQuery AllowGlobbing="false">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="ServicePackMajor">
+            <Type PSType="System.Uint32"/>
+            <RegularQuery AllowGlobbing="false">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="ServicePackMinor">
+            <Type PSType="System.Uint32"/>
+            <RegularQuery AllowGlobbing="false">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="OSSuiteMask">
+            <Type PSType="System.Uint32"/>
+            <RegularQuery AllowGlobbing="false">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="OSProductType">
+            <Type PSType="System.Uint32"/>
+            <RegularQuery AllowGlobbing="false">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="OSSerialNumber">
+            <Type PSType="System.String"/>
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="OSCountryCode">
+            <Type PSType="System.String"/>
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="OSCurrentTimeZone">
+            <Type PSType="System.Int16"/>
+            <RegularQuery AllowGlobbing="false">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="OSDaylightInEffect">
+            <Type PSType="System.Boolean"/>
+            <RegularQuery AllowGlobbing="false">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="OSLastBootUpTime">
+            <Type PSType="System.DateTime"/>
+            <RegularQuery AllowGlobbing="false">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="MaximumMemory">
+            <Type PSType="System.Uint64"/>
+            <RegularQuery AllowGlobbing="false">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="SystemSMBIOSUUID">
+            <Type PSType="System.String"/>
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="SystemSerialNumber">
+            <Type PSType="System.String"/>
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="SystemDNSHostName">
+            <Type PSType="System.String"/>
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="SystemDomainName">
+            <Type PSType="System.String"/>
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="CreationTime">
+            <Type PSType="System.DateTime"/>
+            <RegularQuery AllowGlobbing="false">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="SystemManufacturer">
+            <Type PSType="System.String"/>
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="SystemProductName">
+            <Type PSType="System.String"/>
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" />
+            </RegularQuery>
+          </Property>
+        </QueryableProperties>
+      </GetCmdletParameters>
+      <GetCmdlet>
+        <CmdletMetadata Verb="Get" HelpUri="http://go.microsoft.com/fwlink/?LinkId=242951" />
+      </GetCmdlet>
+    </InstanceCmdlets>
+  </Class>
+</PowerShellMetadata>
+

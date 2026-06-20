@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata
+  xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+
+  <Class ClassName="root\AccessLogging\MsftUal_DailyDeviceAccess">
+    <Version>1.0</Version>
+    <DefaultNoun>UalDailyDeviceAccess</DefaultNoun>
+    <InstanceCmdlets>
+      <GetCmdletParameters DefaultCmdletParameterSet="ByName">
+        <QueryableProperties>
+          <Property PropertyName="ProductName">
+            <Type PSType="System.String"/>
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="RoleName">
+            <Type PSType="System.String"/>
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="RoleGuid">
+            <Type PSType="System.String"/>
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="IPAddress">
+            <Type PSType="System.String"/>
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="AccessDate">
+            <Type PSType="System.DateTime"/>
+            <RegularQuery AllowGlobbing="false">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" />
+            </RegularQuery>
+          </Property>
+          <Property PropertyName="AccessCount">
+            <Type PSType="System.Uint32"/>
+            <RegularQuery AllowGlobbing="false">
+              <CmdletParameterMetadata IsMandatory="false" ValueFromPipelineByPropertyName="true" CmdletParameterSets="ByName" />
+            </RegularQuery>
+          </Property>
+        </QueryableProperties>
+      </GetCmdletParameters>
+      <GetCmdlet>
+        <CmdletMetadata Verb="Get" HelpUri="http://go.microsoft.com/fwlink/?LinkId=242960" />
+      </GetCmdlet>
+    </InstanceCmdlets>
+  </Class>
+</PowerShellMetadata>
+

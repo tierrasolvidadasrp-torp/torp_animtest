@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+<Class ClassName="root\InventoryLogging\MsftSil_WindowsUpdate">
+    <Version>1.0.0.0</Version>
+    <DefaultNoun>SilWindowsUpdate</DefaultNoun>
+    <InstanceCmdlets>
+<!--
+Global definition for query parameters. Not used in this example because we have a single cmdlet only.
+-->
+     <GetCmdletParameters />
+<!--
+Definition of Get-SilWindowsUpdate cmdlet
+-->
+      <GetCmdlet>
+       <CmdletMetadata Verb="Get" />
+       <GetCmdletParameters>
+        <QueryableProperties>
+          <Property PropertyName="ID">
+            <Type PSType="string" />
+            <RegularQuery AllowGlobbing="true">
+              <CmdletParameterMetadata IsMandatory="false"
+                                       Position="0"
+                                       ValueFromPipelineByPropertyName="true"/>
+            </RegularQuery>
+          </Property>
+        </QueryableProperties>
+       </GetCmdletParameters>
+      </GetCmdlet>      
+    </InstanceCmdlets>
+  </Class>
+</PowerShellMetadata>

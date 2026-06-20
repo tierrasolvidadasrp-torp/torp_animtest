@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PowerShellMetadata
+  xmlns="http://schemas.microsoft.com/cmdlets-over-objects/2009/11">
+
+  <Class ClassName="root\AccessLogging\MsftUal_Admin">
+    <Version>1.0</Version>
+    <DefaultNoun>Ual</DefaultNoun>
+    <InstanceCmdlets>
+      <GetCmdletParameters DefaultCmdletParameterSet="ByName">
+      </GetCmdletParameters>
+      <GetCmdlet>  
+        <CmdletMetadata Verb="Get" HelpUri="http://go.microsoft.com/fwlink/?LinkId=242948" />  
+      </GetCmdlet> 
+    </InstanceCmdlets>
+    <StaticCmdlets>
+      <Cmdlet>
+        <CmdletMetadata Verb="Enable" HelpUri="http://go.microsoft.com/fwlink/?LinkId=242950" />
+        <Method MethodName="Enable">
+          <ReturnValue>
+            <Type PSType="System.Uint32"/>
+            <CmdletOutputMetadata>
+              <ErrorCode/>
+            </CmdletOutputMetadata>
+          </ReturnValue>
+        </Method>
+      </Cmdlet>
+      <Cmdlet>
+        <CmdletMetadata Verb="Disable" HelpUri="http://go.microsoft.com/fwlink/?LinkId=242949" />
+        <Method MethodName="Disable">
+          <ReturnValue>
+            <Type PSType="System.Uint32"/>
+            <CmdletOutputMetadata>
+              <ErrorCode/>
+            </CmdletOutputMetadata>
+          </ReturnValue>
+        </Method>
+      </Cmdlet>
+    </StaticCmdlets>
+  </Class>
+</PowerShellMetadata>
